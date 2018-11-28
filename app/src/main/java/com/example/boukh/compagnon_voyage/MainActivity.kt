@@ -13,6 +13,8 @@ import android.view.MenuItem
 import com.example.boukh.compagnon_voyage.dummy.DummyContent
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+
+
 import kotlinx.android.synthetic.main.fragment_story_list.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
@@ -27,6 +29,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        // initiate the date picker and a button
+
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
@@ -83,7 +87,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.planning -> {
-                // Handle the camera action
+                setFragment(PlanFragment())
             }
             R.id.carnet -> {
                 //Display Carnet
