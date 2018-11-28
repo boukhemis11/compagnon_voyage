@@ -13,8 +13,10 @@ import android.view.MenuItem
 import com.example.boukh.compagnon_voyage.dummy.DummyContent
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.fragment_story_list.*
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, StoriesFragment.OnListFragmentInteractionListener, HomeFragment.OnFragmentInteractionListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
+    StoriesFragment.OnListFragmentInteractionListener, HomeFragment.OnFragmentInteractionListener {
 
     override fun onFragmentInteraction(uri: Uri) {
     }
@@ -47,10 +49,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
+            //Si le fragment liste des stories est affiché: on retourne sur le menu en cas d'action retour arrière android
+        } else if (listOfStories.isShown) {
+            setFragment(HomeFragment())
         } else {
             super.onBackPressed()
         }
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -94,4 +105,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             .replace(R.id.my_content, frag)
             .commit()
     }
+
+
 }
