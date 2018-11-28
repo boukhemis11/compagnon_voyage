@@ -3,6 +3,7 @@ package com.example.boukh.compagnon_voyage
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
+import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
@@ -63,11 +64,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 // Handle the camera action
             }
             R.id.carnet -> {
-
+                //Display Carnet
             }
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+
+    /**
+     * Change fragment
+     */
+    private fun setFragment(frag: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.my_content, frag)
+            .commit()
     }
 }
