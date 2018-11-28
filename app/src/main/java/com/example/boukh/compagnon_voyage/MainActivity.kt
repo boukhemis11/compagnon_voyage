@@ -1,5 +1,6 @@
 package com.example.boukh.compagnon_voyage
 
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
@@ -13,7 +14,10 @@ import com.example.boukh.compagnon_voyage.dummy.DummyContent
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, StoriesFragment.OnListFragmentInteractionListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, StoriesFragment.OnListFragmentInteractionListener, HomeFragment.OnFragmentInteractionListener {
+
+    override fun onFragmentInteraction(uri: Uri) {
+    }
 
     override fun onListFragmentInteraction(item: DummyContent.DummyItem?) {
     }
@@ -35,6 +39,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+
+        // Set Home fragment by default
+        setFragment(HomeFragment())
     }
 
     override fun onBackPressed() {
