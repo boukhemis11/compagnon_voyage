@@ -36,7 +36,7 @@ object DummyContent {
     }
 
     private fun createDummyItem(position: Int): DummyItem {
-        return DummyItem(position.toString(), "Story " + position, makeDetails(position))
+        return DummyItem("0" + position.toString() + "-11-2018", "Visite du site touristique " + position, makeDetails(position))
     }
 
     private fun makeDetails(position: Int): String {
